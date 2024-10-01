@@ -1,0 +1,89 @@
+Program Worksheet
+Write this code in java language. Do not use Arraylist.
+
+Part 1:
+For this assignment, your Item class must also implement the Comparable interface. Example:
+              public class Circle implements Comparable<Circle>
+
+Add the Comparable.compareTo(...) method (below) to your class so you can sort Items.  
+• public int compareTo( Item o ) - Compares this Item to the Item passed in the argument.  This method returns either a negative integer, zero, or a positive integer based on whether the argument Item is less than, equal to, or larger than the current Item, respectively.  
+
+Then
+c1.compareTo(c2) returns a negative int because red is equal to Red and 10 < 20.
+c3.compareTo(c2) returns a negative int because Blue < red in alphabetical order ignoring the case.
+
+
+Part 2:
+Implement two subclasses that extend your Item class, we’ll call them ItemA and ItemB here.  Implement them as follows:
+Instance Variables:
+•	Give your ItemA subclass one instance variable that is a private String.
+•	Give your ItemB subclass one instance variable that is a private Boolean.
+
+Constructors:
+•	public ItemA( String s, Integer n1, Integer n2 ) is a constructor where n1 is the argument for the parent Item class, and n2 is the Integer for the ItemA subclass.  
+•	public ItemB( String s, Integer n1, Boolean n2 ) is a constructor where n1 is the argument for the parent Item class, and n2 is the Integer for the ItemB subclass.  
+
+Methods:
+•	Implement a public getter and setter for each new instance variable.
+•	public String toString() - Returns a String representation of the object where all instance variables are on one line and are separated by tabs. This method must call the toString() method of Item.  Do not include any text in the String other than the values of the instance variables.
+•	public boolean equals(ItemA a) - Calls the equals method from Item first and, if true, it checks the equality of ItemA’s  Integer instance variable.
+•	public boolean equals(ItemB b) - Calls the equals method from Item first and, if true, it checks the equality of ItemB’s  Boolean instance variable.
+
+Part 3:
+Create a text file. The text file must have each line in the input file represent one item. The line must include the following values separated by tab: (1) an int to specify whether the line represents an ItemA, ItemB, or Item object of no subtype respectively, (2) string value, (3) integer value, and (4) an Integer value for ItemA or boolean value for ItemB.  
+
+For instance, suppose your Item class were Pet, where your parameters were pet name and weight.  Your file might have looked like this:
+
+Fido	20
+Callie	14
+Polly	1
+
+The new file would also have an int in the first field indicating the subtype of Pet, and a final field indicating the new instance variable.  Let’s say the new instance variable for Dog was age, and the new field for Cat was isMale.  Then the new input file would look something like this (if the types of Pet were Dog = 1, Cat = 2, no subtype = 3).
+
+1	Fido	20	8
+2	Callie	14	false
+3	Polly	1
+
+Part 4:
+Implement a collection class that uses an array (Item[]) to store the items in a sorted order. You may NOT use the Java library classes ArrayList or Vector or any other java collection class. 
+Instance Variables:  
+• private Item[] itemAry;
+The array of Items in the set.
+
+• private Integer max;
+The maximum allowable number
+
+Constructor:  
+
+•	public Item( Integer max ) - Implements a constructor for your collection class that takes one Integer input parameter that represents the maximum number of Items that can be stored in your collection.
+
+Methods: 
+
+•	public void insert( Item i ) - Inserts an object of type Item in the set such that: (1) the method must maintain the sorted order according to the compareTo method and (2) duplicates are not allowed which means that the item is not inserted if the set already has another item that is equal to the input item where equality is determined as described above. You are not allowed to use the java Arrays.sort method.
+
+•	public int size() - Returns the number of items in the collection.
+
+•	public String toString() - Returns a string representation of the collection that includes all items. The output string must be nicely formatted in a tabular format.
+blue	10		
+Green	20	20		
+red	20	true		
+Red	30
+
+•	public int indexOf(Item i) 
+Returns an int that represents the array index at which the input item is found or -1 if the item is not found. The equality of items is determined by the equals method.
+
+•	public boolean remove(Item i)
+Search the collection for an Item that equals the input item and, if found, remove this Item from the set. Return true if the Item is removed and false otherwise. This method must maintain the sorted order. Do not use the Java's Arrays.sort(…) method.
+
+•	public Item grab(int index) 
+Return the Item that is stored at position index in the set or null if index is beyond the size of the collection. Do not delete the element from the set.
+
+•	public <Item>SortedArraySet categorySet( int type  ) 
+Return as output an <Item>SortedArraySet that contains only specific subitem type. Assume 1 represents ItemA, 2 represents ItemB, and 3 represents items that are neither ItemA nor ItemB. Then categorySet(1) returns a set of items of type ItemA. The method returns null if the input is any number other than 1, 2, or 3. The method returns an empty set (not nulfl) if there are no items of the given type.
+
+Part 5:
+1.	Create an input file of at least 20 lines with at least 5 lines for each item type (ItemA, ItemB, Item that is neither ItemA nor ItemB). Include some duplicate lines to test that the add method does not add duplicate items.
+2.	Ask the user the name of the data file, read the file name, open the file, read the file line by line, and upload the data to an <Item>SortedArraySet.  
+3.	Print the list. Make sure the items are in sorted order and there are no duplicates.
+4.	Include at least two test cases for each one of the following methods: indexOf, remove, grab, and categorySet. Make sure to print appropriate messages in the output so that it is easy to interpret your test cases.
+
